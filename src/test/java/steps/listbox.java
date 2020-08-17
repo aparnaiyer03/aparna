@@ -11,14 +11,22 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class listbox {
-	public WebDriver driver = null;
+	
+	
+	public WebDriver driver;
+	 
+    
+	
 	String driverPath = "C:\\Program Files (x86)/chromedriver.exe";
 	@Given("^I login to the application$")
+	
 	
 	public void i_login_to_the_application() throws Throwable {
 		System.setProperty("webdriver.chrome.driver", driverPath);
@@ -299,8 +307,5 @@ public class listbox {
 		driver.close();
 	}
 	
-
-  
-
-
 }
+

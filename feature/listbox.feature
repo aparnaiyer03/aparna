@@ -1,4 +1,4 @@
-@Runseleasy
+@listbox
 Feature: Test List Box
 
   Scenario: 01 list box tab

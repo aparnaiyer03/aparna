@@ -1,19 +1,17 @@
-@ProgressBarTest
+@progress
 Feature: Test Progress Bar
 
 
     
 
-  @ClickProgressBar
   Scenario: 01 Test three drop-down options after clicking Progress Bar tab
-     Given I login to the application
+     Given I launch the application
     And I click on Progress Bar Tab
     Then I verify three drop-down values are getting displayed
     
 
-  @JQueryDownloadProgressbars
   Scenario Outline: 02 Test JQuery Download Progress bars button
-  Given I login to the application
+  Given I launch the application
     And I click on Progress Bar Tab
     And I click on sub tab JQuery Download Progress bars
     Then I verify text on webpage "<xpath_data>"is "<text>" 
@@ -23,9 +21,8 @@ Feature: Test Progress Bar
     |JQuery UI Progress bar - Download Dialog|/html/body/div[2]/div/div[2]/div/h2|
 		
 		
-  @StartDownload
   Scenario: 03 Test Start Download button
-     Given I login to the application
+     Given I launch the application
     And I click on Progress Bar Tab
     And I click on sub tab JQuery Download Progress bars
     Then I click on Start Download button
@@ -33,9 +30,8 @@ Feature: Test Progress Bar
     And I click on Close button 
 	
     
-  @BootstrapProgressBar
   Scenario Outline: 04 Test Bootstrap Progress Bar button
- Given I login to the application
+ Given I launch the application
     And I click on Progress Bar Tab
     And I click on sub tab Bootstrap Progress Bar
     Then I verify text on webpage "<xpath_data>"is "<text>" 
@@ -43,9 +39,9 @@ Feature: Test Progress Bar
     |text|xpath_data|
     |Stylish progress bar demo for the automation|/html/body/div[2]/div/div[2]/h3|
 	
-	@StylishProgressBar
+	
 	Scenario Outline: 05 Test Bootstrap Progress Bar button
-    Given I login to the application
+    Given I launch the application
     And I click on Progress Bar Tab
     And I click on sub tab Bootstrap Progress Bar
     Then I verify initial value of progress bar is "<percent>"
@@ -55,18 +51,16 @@ Feature: Test Progress Bar
     
     
 	
-  @Downloadsize:20480kb
   Scenario: 06 Test
-    Given I login to the application
+    Given I launch the application
     And I click on Progress Bar Tab
     And I click on sub tab Bootstrap Progress Bar
     And I click on Downloadsize:20480kb button
     Then I verify the progress bar stops at 100%
 
 
-  @DragAndDropSlider
   Scenario Outline: 07 Test Drag and Drop Slider button
-    Given I login to the application
+    Given I launch the application
     And I click on Progress Bar Tab
     And I click on sub tab Drag and Drop Slider
     Then I verify text on webpage "<xpath_data>"is "<text>" 
