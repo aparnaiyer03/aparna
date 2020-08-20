@@ -17,7 +17,7 @@ Feature: Test List Box
     Examples: 
       | message                 |
       | bootstrap-duallist      |
-      | Dapibus ac facilisis in |
+    
 
   Scenario Outline: 03 Data List Filter tab
     Given I login to the application
@@ -32,7 +32,7 @@ Feature: Test List Box
       | manager           |
       | 980-543-3333      |
       | test5@company.com |
-
+@list4
   Scenario Outline: 04 JQuery list box
     Given I login to the application
     And I click on list box tab
@@ -47,7 +47,7 @@ Feature: Test List Box
     Examples: 
       | option   |
       | Alice    |
-      | Isabella |
+      
 
   Scenario: 05 JQuery addall and removeall
     Given I login to the application

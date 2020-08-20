@@ -1,4 +1,4 @@
-@inputta
+@input
 Feature: input tab
 
 Scenario Outline: 01

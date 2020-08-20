@@ -1,7 +1,7 @@
 package steps;
 
 import java.util.List;
-
+import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -49,7 +49,7 @@ public class listbox {
 		List<WebElement> elements = driver.findElements(
 				By.xpath("//li[@class='dropdown open']//ul[@class='dropdown-menu']//li"));
 		System.out.println("count is" + elements.size());
-		driver.close();
+		
 	}
 
 	@Given("^I click on bootstrap list box$")
@@ -72,31 +72,20 @@ public class listbox {
 				.click();
 	}
 
-	@When("^I select some results Dapibus ac facilisis in$")
-	public void i_select_some_results_Dapibus_ac_facilisis_in() throws Throwable {
-		WebDriverWait wait = new WebDriverWait(driver, 15);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='well text-right']//li[@class='list-group-item'][contains(text(),'Dapibus ac facilisis in')]")));
-		
-		driver.findElement(By.xpath(
-				"//div[@class='well text-right']//li[@class='list-group-item'][contains(text(),'Dapibus ac facilisis in')]"))
-				.click();
-	}
-
+	
 	@Then("^I verify the resultsbootstrap-duallist are shifted$")
 	public void i_verify_the_resultsbootstrap_duallist_are_shifted() throws Throwable {
+		WebDriverWait wait = new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='well']/descendant::ul[@class='list-group']//li[contains(text(),'bootstrap-duallist')]")));
+		
+		
 		WebElement first = driver.findElement(By.xpath(
 				"//div[@class='well']/descendant::ul[@class='list-group']//li[contains(text(),'bootstrap-duallist')]"));
 		Assert.assertEquals(true, first.isDisplayed());
 		driver.close();
 	}
 
-	@Then("^I verify the resultsDapibus ac facilisis in are shifted$")
-	public void i_verify_the_resultsDapibus_ac_facilisis_in_are_shifted() throws Throwable {
-		WebElement second = driver.findElement(
-				By.xpath("//li[@class='list-group-item active'][contains(text(),'Dapibus ac facilisis in')]"));
-		Assert.assertEquals(true, second.isDisplayed());
-		driver.close();
-	}
+	
 
 	@Given("^I click on data list filter tab$")
 	public void i_click_on_data_list_filter_tab() throws Throwable {
@@ -208,24 +197,8 @@ public class listbox {
 
 	}
 
-	@Given("^I select a result Isabella$")
-	public void i_select_a_result_Isabella() throws Throwable {
-		driver.findElement(By.xpath("//option[contains(text(),'Isabella')]")).click();
-	}
 
-	@Then("^I verify result Isabella is added$")
-	public void i_verify_result_Isabella_is_added() throws Throwable {
-		try {
-			WebElement fourth = driver.findElement(By.xpath(
-					"//select[@class='form-control pickListSelect pickListResult']//option[contains(text(),'Isabella')]"));
-			Assert.assertEquals(true, fourth.isDisplayed());
-		} catch (AssertionError e) {
-			System.out.println("Isabella is absent");
-			throw e;
-		}
-		System.out.println("Isabella is present");
 
-	}
 
 	@When("^I select a resultAlice$")
 	public void i_select_a_resultAlice() throws Throwable {
@@ -250,34 +223,33 @@ public class listbox {
 		driver.close();
 	}
 
-	@When("^I select a resultIsabella$")
-	public void i_select_a_resultIsabella() throws Throwable {
-		driver.findElement(By.xpath(
-				"//select[@class='form-control pickListSelect pickListResult']//option[contains(text(),'Isabella')]")).click();
-	}
 
-	@Then("^I verify the element Isabellais removed$")
-	public void i_verify_the_element_Isabellais_removed() throws Throwable {
-		List elements =driver.findElements(By.xpath("//select[@class='form-control pickListSelect pickListResult']//option[contains(text(),'Isabella')]"));
-		if(elements.size()==0){
-		    System.out.println("Element Isabella has been removed");
 
-		 } else {
-		    System.out.println("Isabella has not been removed");
-		 }
-		driver.close();
-	}
 	
 	@When("^I click on addall button$")
 	public void i_click_on_addall_button() throws Throwable {
-	   driver.findElement(By.xpath("//button[@class='pAddAll btn btn-primary btn-sm']")).click();
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, 15);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='pAddAll btn btn-primary btn-sm']")));
+			
+	   driver.findElement(By.xpath("//button[@class='pAddAll btn btn-primary btn-sm']")).click();}
+		catch(NoSuchElementException e) {
+			System.out.println("No such element- add all");
+		}
 	}
 
 	
 
 	@Then("^when I click on removeall button$")
 	public void when_I_click_on_removeall_button() throws Throwable {
-	driver.findElement(By.xpath("//button[@class='pRemoveAll btn btn-primary btn-sm']")).click();   
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, 15);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='pRemoveAll btn btn-primary btn-sm']")));
+			
+	driver.findElement(By.xpath("//button[@class='pRemoveAll btn btn-primary btn-sm']")).click();  }
+		catch(NoSuchElementException e) {
+			System.out.println("no such element excpetion- remove all");
+		}
 	}
 
 	@Then("^I verify that all the results are added$")

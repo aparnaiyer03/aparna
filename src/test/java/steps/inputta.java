@@ -49,6 +49,7 @@ public class inputta {
 	    element=new WebDriverWait(driver,20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"display\"]")));
 		String val=element.getAttribute("innerText");
 		Assert.assertEquals("aparna", val); 
+		driver.close();
 	}
 
 	@Given("^I enter (\\d+) values (\\d+) (\\d+)$")
@@ -77,6 +78,7 @@ public class inputta {
 		else {
 			System.out.println("Incorrect sum");
 		}
+		driver.close();
 	}
 
 	@Given("^I enter (\\d+) values apa rna$")
@@ -97,7 +99,7 @@ public class inputta {
 		}
 		else
 			System.out.println("output for apa rna sum is INCORRECT");
-
+driver.close();
 	}
 
 	@Given("^I click on checkbox demo$")
@@ -116,6 +118,7 @@ public class inputta {
 		if( driver.findElement(By.xpath("//div[@id='txtAge']")).isDisplayed()){
 			System.out.println("Element is Visible");
 			}
+		driver.close();
 	}
 
 	@Given("^I click on checkall$")
@@ -147,7 +150,7 @@ public class inputta {
 			System.out.println("option 4 unchecked");
 		    }
 		
-
+driver.close();
 	}
 
 }

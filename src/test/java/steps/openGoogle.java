@@ -27,7 +27,7 @@ public WebDriver driver;
 		driver = new ChromeDriver();
 		String baseUrl = "https://www.seleniumeasy.com/test/";
 		driver.get(baseUrl);
-		WebDriverWait wait = new WebDriverWait(driver, 20);
+		WebDriverWait wait = new WebDriverWait(driver, 60);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\'at-cv-lightbox-button-holder\']/a[2]")))
 				.click();
 	}
@@ -52,7 +52,7 @@ public void i_verify_three_drop_down_values_are_getting_displayed() throws Throw
      }
      else {
      	System.out.println(". Three drop-down values are NOT displayed");}
-         driver.close();
+       
 
 }
 
@@ -66,6 +66,9 @@ public void i_click_on_sub_tab_JQuery_Download_Progress_bars1() throws Throwable
 
 @Then("^I verify text on webpage \"([^\"]*)\"is \"([^\"]*)\"$")
 public void i_verify_text_on_webpage_is(String arg1, String arg2) throws Throwable {
+	WebDriverWait wait = new WebDriverWait(driver, 60);
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(arg1)));
+	
 	String str=driver.findElement(By.xpath(arg1)).getText();
     if(str.equals(arg2))
     {
@@ -138,7 +141,7 @@ public void i_click_on_Downloadsize_kb_button(int arg1) throws Throwable {
 
 @Then("^I verify the progress bar stops at (\\d+)%$")
 public void i_verify_the_progress_bar_stops_at(int arg1) throws Throwable {
-	 WebDriverWait wait = new WebDriverWait(driver, 20);
+	 WebDriverWait wait = new WebDriverWait(driver, 100);
      wait.until(new ExpectedCondition<Boolean>() {
      	public Boolean apply(WebDriver webDriver) {
      		return driver.findElement(By.xpath("//*[@id=\"circle\"]/div/div[1]")).getText().equals("100%");

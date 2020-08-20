@@ -12,7 +12,7 @@ import cucumber.api.testng.TestNGCucumberRunner;
 
 @CucumberOptions(
 		features= "../Oklahoma/feature",
-		glue= {"steps"},
+		glue= {"steps"},tags= {"@progress"},
 		format = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",

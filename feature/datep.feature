@@ -1,4 +1,4 @@
-@datep
+@date
 Feature: Datepicker 
 
 

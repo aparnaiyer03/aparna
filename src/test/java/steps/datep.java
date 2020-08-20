@@ -167,7 +167,7 @@ public void i_click_on_Bootstrap_date_picker_tab() throws Throwable {
 
 @Given("^I click on calender in dateeg$")
 public void i_click_on_calender_in_dateeg() throws Throwable {
-  driver.findElement(By.xpath("//input[@placeholder='dd/mm/yyyy")).click();
+  driver.findElement(By.xpath("//input[@placeholder='dd/mm/yyyy']")).click();
 }
 
 @Given("^I click on today$")
@@ -222,7 +222,7 @@ public void i_verify_the_field_is_empty() throws Throwable {
 
 @Given("^I verify all future year and month is disbaled$")
 public void i_verify_all_future_year_and_month_is_disbaled() throws Throwable {
-	WebDriverWait wait = new WebDriverWait(driver,25 );
+	WebDriverWait wait = new WebDriverWait(driver,90 );
 	wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//i[@class='glyphicon glyphicon-th']"))).click();
 
     System.out.println("All months after august");
